@@ -1,20 +1,18 @@
-import { BaseEmoji, Picker } from 'emoji-mart'
-import 'emoji-mart/css/emoji-mart.css'
-import { useAppSelector } from '../../store/hooks'
-import { selectMode } from '../../store/themeSlice'
+const pickEmojiOnClick = (emoji: BaseEmoji, event: MouseEvent) => {
+  event.stopPropagation()
 
-type Props = { onClick: (emoji: BaseEmoji, event: React.MouseEvent) => void }
+  setIcon(emoji.native)
+  setEmojiPickerIsOpen(false)
 
-export default function EmojiPicker(props: Props) {
-  const theme = useAppSelector(selectMode)
+  const updatedGoal: Goal = {
+    ...props.goal,
+    icon: emoji.native ?? props.goal.icon,
+    name: name ?? props.goal.name,
+    targetDate: targetDate ?? props.goal.targetDate,
+    targetAmount: targetAmount ?? props.goal.targetAmount,
+  }
 
-  return (
-    <Picker
-      theme={theme}
-      showPreview={false}
-      showSkinTones={false}
-      onClick={props.onClick}
-      color="primary"
-    />
-  )
+  dispatch(updateGoalRedux(updatedGoal))
+
+  // TODO(TASK-3) Update database
 }
