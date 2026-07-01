@@ -1,7 +1,26 @@
-// types.ts
+// Default Empty Goal
+export const defaultGoal: Goal = {
+  id: '',
+  name: '',
+  target: 0,
+  saved: 0,
+  icon: '🎯'
+};
 
-export interface Goal {
-  // ...
-
-  icon: string | null
-}
+// Example Mock Data Array
+export const mockGoals: Goal[] = [
+  {
+    id: '1',
+    name: 'Vacation Fund',
+    target: 5000,
+    saved: 1200,
+    icon: '🎯'
+  },
+  {
+    id: '2',
+    name: 'Emergency Fund',
+    target: 10000,
+    saved: 8000,
+    icon: '🎯'
+  }
+];
